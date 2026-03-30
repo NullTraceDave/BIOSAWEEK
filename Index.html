@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOSA/EMT WEEK 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://js.paystack.co/v2/inline.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .biosa-green { color: #1a472a; }
+        .bg-biosa-green { background-color: #1a472a; }
+        .hero-gradient { background: linear-gradient(135deg, #1a472a 0%, #2d5a27 100%); }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+
+    <header class="hero-gradient text-white py-16 px-6 text-center shadow-2xl">
+        <div class="flex justify-center mb-4 gap-4">
+             <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center text-green-800 font-bold">BIOSA</div>
+             <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center text-green-800 font-bold">EMT</div>
+        </div>
+        <h1 class="text-4xl md:text-6xl font-black mb-2 tracking-tight uppercase">BIOSA/EMT WEEK</h1>
+        <p class="text-lg italic opacity-90">"Where Science Meets Vibes"</p>
+        
+        <div id="countdown" class="flex justify-center gap-3 mt-8">
+            <div class="bg-black/30 p-3 rounded-lg min-w-[70px]">
+                <span id="days" class="block text-2xl font-bold">00</span>
+                <span class="text-[10px] uppercase">Days</span>
+            </div>
+            <div class="bg-black/30 p-3 rounded-lg min-w-[70px]">
+                <span id="hours" class="block text-2xl font-bold">00</span>
+                <span class="text-[10px] uppercase">Hrs</span>
+            </div>
+            <div class="bg-black/30 p-3 rounded-lg min-w-[70px]">
+                <span id="mins" class="block text-2xl font-bold">00</span>
+                <span class="text-[10px] uppercase">Min</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 -mt-8">
+        
+        <section class="bg-white rounded-2xl shadow-xl p-6 md:p-10 mb-12 border-t-8 border-green-700">
+            <div class="flex flex-col md:flex-row gap-10 items-center">
+                <div class="md:w-3/5">
+                    <h2 class="text-2xl font-bold mb-4 biosa-green">Get Your Event Ticket</h2>
+                    <p class="text-gray-600 mb-6 text-sm">One ticket grants you access to all major events, including the <b>Rave & Award Night</b> on May 1st.</p>
+                    
+                    <div class="bg-green-50 p-4 rounded-lg mb-6 border border-green-100">
+                        <span class="text-gray-500 text-xs uppercase block">Ticket Price</span>
+                        <span class="text-3xl font-black biosa-green">₦2,000</span>
+                    </div>
+
+                    <div class="space-y-4">
+                        <input type="email" id="email-address" placeholder="Enter your Student Email" 
+                               class="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-600 outline-none transition-all">
+                        
+                        <button type="button" onclick="payWithPaystack()" 
+                                class="w-full bg-biosa-green text-white font-bold py-4 rounded-xl hover:bg-green-900 transition-all shadow-lg active:scale-95">
+                            SECURE TICKET NOW
+                        </button>
+                    </div>
+                </div>
+
+                <div class="md:w-2/5 flex flex-col items-center bg-gray-50 p-6 rounded-2xl border-2 border-dashed border-gray-200">
+                    <div id="qrcode" class="flex items-center justify-center bg-white p-2 rounded-lg shadow-inner mb-4 min-h-[128px] min-w-[128px]">
+                         <p class="text-[10px] text-gray-400 text-center">QR Code will generate <br> after successful payment</p>
+                    </div>
+                    <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest">Digital Entry Pass</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h3 class="text-center font-bold text-xl mb-6 uppercase tracking-widest text-gray-500">Event Schedule</h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+                <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-green-600">
+                    <p class="text-[10px] font-bold text-green-600 uppercase">Mon 27</p>
+                    <p class="text-xs font-bold leading-tight mt-1">Clean Up & Treasure Hunt</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-green-600">
+                    <p class="text-[10px] font-bold text-green-600 uppercase">Tue 28</p>
+                    <p class="text-xs font-bold leading-tight mt-1">Cooking Competition</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-green-600">
+                    <p class="text-[10px] font-bold text-green-600 uppercase">Wed 29</p>
+                    <p class="text-xs font-bold leading-tight mt-1">Picnic Day</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-green-600">
+                    <p class="text-[10px] font-bold text-green-600 uppercase">Thu 30</p>
+                    <p class="text-xs font-bold leading-tight mt-1">Football Match (M/F)</p>
+                </div>
+                <div class="bg-black text-white p-4 rounded-xl shadow-sm">
+                    <p class="text-[10px] font-bold text-yellow-400 uppercase">Fri 01</p>
+                    <p class="text-xs font-bold leading-tight mt-1">Rave & Award Night</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-gray-100 rounded-2xl p-8 mb-12">
+            <h3 class="text-xl font-bold mb-4 text-center">Inquiries?</h3>
+            <form action="https://formspree.io/f/YOUR_ID" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input type="text" name="name" placeholder="Full Name" class="p-3 rounded-lg border outline-none">
+                <input type="text" name="phone" placeholder="Phone Number" class="p-3 rounded-lg border outline-none">
+                <textarea name="message" placeholder="How can we help?" class="p-3 rounded-lg border outline-none md:col-span-2"></textarea>
+                <button type="submit" class="bg-gray-800 text-white py-3 rounded-lg md:col-span-2 hover:bg-black transition-colors">Send Message</button>
+            </form>
+        </section>
+
+    </main>
+
+    <footer class="bg-white border-t py-10 text-center">
+        <p class="text-sm text-gray-500 mb-2">© 2026 BIOSA & EMT Associations</p>
+        <p class="text-xs text-gray-400 uppercase tracking-widest">Excellence in Service</p>
+    </footer>
+
+    <script>
+        // 1. Paystack Connection
+        function payWithPaystack() {
+            const email = document.getElementById("email-address").value;
+            const publicKey = 'pk_test_169843f6d80e0724801e056a6b82124babc864a5'; // Use the key you provided
+
+            if (!email || !email.includes('@')) {
+                alert("Please enter a valid student email address.");
+                return;
+            }
+
+            const paystack = new PaystackPop();
+            paystack.newTransaction({
+                key: publicKey,
+                email: email,
+                amount: 2000 * 100, // 2000 Naira
+                onSuccess: (transaction) => {
+                    alert('Payment Successful! Reference: ' + transaction.reference);
+                    generateTicket(transaction.reference);
+                },
+                onCancel: () => {
+                    alert('Transaction cancelled. No funds were debited.');
+                }
+            });
+        }
+
+        // 2. QR Code Generation
+        function generateTicket(ref) {
+            document.getElementById("qrcode").innerHTML = "";
+            new QRCode(document.getElementById("qrcode"), {
+                text: "BIOSA-EMT-2026-" + ref,
+                width: 128,
+                height: 128,
+                colorDark: "#1a472a",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+            alert("Your QR Ticket is ready! Take a screenshot for entry.");
+        }
+
+        // 3. Simple Countdown
+        const target = new Date("April 27, 2026 08:00:00").getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const d = target - now;
+            document.getElementById("days").innerText = Math.floor(d / (1000 * 60 * 60 * 24));
+            document.getElementById("hours").innerText = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById("mins").innerText = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
+        }, 1000);
+    </script>
+</body>
+          </html>
+          
